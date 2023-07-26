@@ -1,0 +1,78 @@
+<div class="filter-section">
+  <!-- Input field for filtering the table -->
+  <mat-form-field class="full-width">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div class="data-table mat-elevation-z0">
+  <!-- Data table with sorting feature -->
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="itemName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.itemName}} </mat-cell>
+    </ng-container>
+
+    <!-- UPC Code Column -->
+    <ng-container matColumnDef="upcCode">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> UPC Code </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.upcCode}} </mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+    </ng-container>
+
+    <!-- On Hand Column -->
+    <ng-container matColumnDef="onHand">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> On Hand </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.onHand}} </mat-cell>
+    </ng-container>
+
+    <!-- Cost Price Column -->
+    <ng-container matColumnDef="costPrice">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Cost Price </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.costPrice}} </mat-cell>
+    </ng-container>
+
+    <!-- Selling Price Column -->
+    <ng-container matColumnDef="sellingPrice">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Selling Price </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.sellingPrice}} </mat-cell>
+    </ng-container>
+
+    <!-- Buttons Column -->
+    <ng-container matColumnDef="buttons">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <!-- Edit button -->
+        <button mat-icon-button color="primary" (click)="onEdit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <!-- Delete button -->
+        <button mat-icon-button color="warn" (click)="onDelete(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Define the header row and specify which columns to display -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <!-- Define the data rows and bind them to the corresponding columns -->
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <!-- Paginator for controlling the number of items per page -->
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

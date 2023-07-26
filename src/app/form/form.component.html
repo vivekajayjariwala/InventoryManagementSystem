@@ -1,0 +1,88 @@
+<div mat-dialog-title>
+  <!-- This div represents the title section of the dialog box -->
+  <h1 class="form-title">Inventory Item</h1>
+</div>
+
+<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content class="form-content">
+    <!-- This div represents the content section of the dialog box -->
+    <div class="row">
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Item Name</mat-label>
+        <!-- Input field for the item name -->
+        <input matInput type="text" placeholder="ex. Breadsticks" formControlName="itemName">
+        <mat-error *ngIf="reactiveForm.get('itemName').invalid">
+          <!-- Error message displayed if the item name is not valid -->
+          Must enter an item name.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>UPC Code</mat-label>
+        <!-- Input field for the UPC code -->
+        <input matInput type="number" placeholder="ex. 0001075701053" formControlName="upcCode">
+        <mat-error *ngIf="reactiveForm.get('upcCode').invalid">
+          <!-- Error message displayed if the UPC code is not valid -->
+          UPC Code must be 13 digits.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Description</mat-label>
+        <!-- Textarea field for the description -->
+        <textarea matInput placeholder="ex. Schar Breadsticks GF 150 g" formControlName="description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>On Hand</mat-label>
+        <!-- Input field for the on-hand quantity -->
+        <input matInput type="number" placeholder="ex. 100" formControlName="onHand">
+        <mat-error *ngIf="reactiveForm.get('onHand').invalid">
+          <!-- Error message displayed if the on-hand quantity is not valid -->
+          Invalid input.
+        </mat-error>
+        <span style="position: relative; right: 2px;">units</span>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Cost Price</mat-label>
+        <!-- Input field for the cost price -->
+        <input matInput placeholder="ex. 0.50" type="number" class="right-align" formControlName="costPrice">
+        <mat-error *ngIf="reactiveForm.get('costPrice').invalid || reactiveForm.hasError('costPriceHigher')">
+          <!-- Error message displayed if the cost price is not valid or higher than expected -->
+          Cost price must be lower.
+        </mat-error>
+        <mat-hint>
+          <!-- Additional hint displayed below the input field -->
+          Provide value in CAD.
+        </mat-hint>
+        <span matPrefix class="currency-prefix">$&nbsp;</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Selling Price</mat-label>
+        <!-- Input field for the selling price -->
+        <input matInput placeholder="ex. 2.50" type="number" class="right-align" formControlName="sellingPrice">
+        <mat-error *ngIf="reactiveForm.hasError('costPriceHigher', 'costPrice')">
+          <!-- Error message displayed if the cost price is higher than expected -->
+          Cost price must be lower.
+        </mat-error>
+        <mat-hint>
+          <!-- Additional hint displayed below the input field -->
+          Provide value in CAD.
+        </mat-hint>
+        <span matPrefix class="currency-prefix">$&nbsp;</span>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div mat-dialog-actions class="form-buttons">
+    <!-- Buttons for cancel and save/update actions -->
+    <button mat-raised-button (click)="closeForm()" color="accent">cancel</button>
+    <button mat-raised-button color="primary" type="submit">{{ isEditMode ? 'update' : 'save' }}</button>
+  </div>
+</form>

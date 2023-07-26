@@ -1,0 +1,65 @@
+.form-content {
+  padding-top: 10px; /* Adds 10 pixels of padding to the top of the element */
+}
+
+.row {
+  display: flex; /* Displays the element as a flex container */
+  gap: 10px; /* Sets the gap between flex items to 10 pixels */
+}
+
+mat-form-field {
+  width: 100%; /* Sets the width of the element to 100% */
+  position: relative; /* Positions the element relative to its normal position */
+}
+
+
+.currency-prefix {
+  /*position: absolute;*/
+  left: 2px; /* Sets the left position of the element to 2 pixels */
+  top: 50%; /* Sets the top position of the element to 50% */
+  transform: translateY(-50%); /* Translates the element vertically by -50% of its own height */
+  z-index: 1; /* Sets the stacking order of the element */
+  padding-right: 8px; /* Adds 8 pixels of padding to the right of the element */
+}
+
+.currency-prefix::before {
+  content: ' '; /* Inserts an empty content before the element */
+  top: 50%; /* Sets the top position of the pseudo-element to 50% */
+  transform: translateY(-50%); /* Translates the pseudo-element vertically by -50% of its own height */
+  left: 0; /* Sets the left position of the pseudo-element to 0 */
+  padding-right: 4px; /* Adds 4 pixels of padding to the right of the pseudo-element */
+}
+
+input.right-align::-webkit-outer-spin-button,
+input.right-align::-webkit-inner-spin-button {
+  display: none; /* Hides the spin buttons of the input field in WebKit browsers */
+}
+
+input.right-align {
+  -moz-appearance: textfield; /* Applies a style similar to a regular text field in Mozilla Firefox */
+}
+
+.form-buttons {
+  padding: 0px 25px 25px; /* Adds padding of 0 pixels on the top, 25 pixels on the right and left, and 20 pixels on the bottom */
+}
+
+.form-title {
+  margin-top: 0; /* Removes the top margin */
+  margin-bottom: 10px; /* Adds a margin of 10 pixels at the bottom */
+}
+
+.mat-dialog-title {
+  padding: 0; /* Removes any padding */
+  margin: 0; /* Removes any margin */
+}
+
+.mat-dialog-container {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+button {
+  flex: 1;
+}

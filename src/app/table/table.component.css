@@ -1,0 +1,28 @@
+.data-table {
+  display: flex;
+  flex-direction: column;
+  width: 99%;
+  min-width: 300px;
+}
+
+.filter-section {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+
+.mat-table{
+  overflow: auto;
+  transition: none !important;
+  box-shadow: none !important;
+}
+
